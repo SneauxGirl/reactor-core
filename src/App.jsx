@@ -1,37 +1,29 @@
 import './App.css'
-import { useEffect, useState } from 'react'
+import React from 'react';
 
-function UserGreeting() {
-  return <h2>Welcome back!</h2>
-}
-
-function GuestGreeting() {
-  return <h2>Please sign up.</h2>
-}
-
-function Greeting({ isLoggedIn }) {
-  if (isLoggedIn) {
-    return <UserGreeting />
-  }
-  return <GuestGreeting />
-}
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleLoginClick = () => setIsLoggedIn(true);
-  const handleLogoutClick = () => setIsLoggedIn(false);
-
+  const items = [
+        { id: 1, name: 'Apple' },
+        { id: 2, name: 'Banana' },
+        { id: 3, name: 'Cherry' },
+        { id: 4, name: 'Date' },
+        { id: 5, name: 'Elderberry' },
+  ];
 
   return (
     <div className='container'>
-      <Greeting isLoggedIn={isLoggedIn} />
-      {
-        isLoggedIn ? (
-          <button onClick={handleLogoutClick}>Logout</button>
-        ) : 
-        <button onClick={handleLoginClick}>Login</button>
-      }
+      <h2>Fruit List</h2>
+      <ui>
+        {
+          items.map((item, index) =>
+             <li key={item.id}>{index + 1}. {item.name}</li>
+            //  Can also use index as key for unique identifier every time
+            // Be careful using OL versus numbering within - styling gets complicated
+          )
+        }
+      </ui>
     </div>
   )
 }
