@@ -1,13 +1,37 @@
 import './App.css'
-import { CustomButton } from './components/button'
+import { useEffect, useState } from 'react'
+
+function UserGreeting() {
+  return <h2>Welcome back!</h2>
+}
+
+function GuestGreeting() {
+  return <h2>Please sign up.</h2>
+}
+
+function Greeting({ isLoggedIn }) {
+  if (isLoggedIn) {
+    return <UserGreeting />
+  }
+  return <GuestGreeting />
+}
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLoginClick = () => setIsLoggedIn(true);
+  const handleLogoutClick = () => setIsLoggedIn(false);
+
 
   return (
     <div className='container'>
-        <h1 className="heading">Hello World</h1>
-        <h2 className="heading__sm">My First React App</h2>
-        <CustomButton label={'Some custom text'} borderColor={'red'}/>
+      <Greeting isLoggedIn={isLoggedIn} />
+      {
+        isLoggedIn ? (
+          <button onClick={handleLogoutClick}>Logout</button>
+        ) : 
+        <button onClick={handleLoginClick}>Login</button>
+      }
     </div>
   )
 }
