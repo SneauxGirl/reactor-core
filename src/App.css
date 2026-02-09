@@ -1,5 +1,6 @@
 #root {
   width: 100%;
+  text-align: center;
 }
 
 .container {
@@ -12,4 +13,8 @@
 
 p {
   font-size: 30px;
+}
+
+ul {
+  list-style-type: none;
 }

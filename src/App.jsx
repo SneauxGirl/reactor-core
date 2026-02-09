@@ -1,62 +1,51 @@
-import './App.css'
-import { useState } from 'react';
-
+import './App.css';
+import { BrowserRouter as Router, Link, Routes, Route} from 'react-router-dom';
+import Services from './pages/Services';
 
 function App() {
-  // State to hold form values
-  const [formData, setFormdata] = useState({
-    name: '',
-    email: '',
-  });
+  // Components - generally in their own files
+  function Home() {
+    return <h2>Home Page</h2>
+  }
 
-  // Handler for input changes
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-      setFormdata({
-        ...formData,
-        [name]: value,
-      });
-    }
+  function About() {
+    return <h2>About</h2>
+  }
 
-  // Handler for form submission
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Above: prevents native page reload
-    // Below - send form to server or whatever
-    console.log('Form submitted:', formData);
-  };
+  function Contact() {
+    return <h2>Contact</h2>
+  }
 
+  //Navigates between different locations (components)
   return (
-    <div className='container'>
-      <h2>Simple Form</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>
-            Name:
-            <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            autoComplete="name"
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Email:
-            <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            autoComplete="email"
-            />
-          </label>
-        </div>
-        <button type='submit'>Submit</button>
-      </form>
-    </div>
+    <Router>
+      <div className='container'>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+            <li>
+              <Link to="/services">Services</Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      {/* Define the Routes */}
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='/services' element={<Services />} />
+      </Routes>
+    </Router>
   )
 }
 
