@@ -1,3 +1,17 @@
+# Template, literally
+
+This is a refererence build in five parts.
+
+Intial commit shows basic revisions to standard Vite React package including simple updates to index and App files, and the creation of a button component.
+Commit #2 demonstrates login/logout actions
+Commit #3 addresses indexed lists
+Commit #4 demonstrates a form with export framework
+Commit #5 provides an example of both inline and imported components. This commit also includes a workaround for the fsevents glitch.
+
+# Future Plans
+
+None. Consider this class notes or a small bag of nails.
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
