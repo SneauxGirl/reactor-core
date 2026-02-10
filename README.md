@@ -2,11 +2,11 @@
 
 This is a refererence build in five parts.
 
-Intial commit shows basic revisions to standard Vite React package including simple updates to index and App files, and the creation of a button component.
-Commit #2 demonstrates login/logout actions
-Commit #3 addresses indexed lists
-Commit #4 demonstrates a form with export framework
-Commit #5 provides an example of both inline and imported components. This commit also includes a workaround for the fsevents glitch.
+- Intial commit shows basic revisions to standard Vite React package including simple updates to index and App files, and the creation of a button component.
+- Commit #2 demonstrates login/logout actions
+- Commit #3 addresses indexed lists
+- Commit #4 demonstrates a form with export framework
+- Commit #5 provides an example of both inline and imported components. This commit also includes a workaround for the fsevents glitch.
 
 # Future Plans
 
