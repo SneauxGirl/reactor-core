@@ -1,14 +1,14 @@
 # Template, literally
 
-This is a refererence build in five parts.
+This is a reference build for initial stages and base components of a CRUD app.
 
-- Intial commit shows basic revisions to standard Vite React package including simple updates to index and App files, and the creation of a button component.
-- Commit #2 demonstrates login/logout actions
-- Commit #3 addresses indexed lists
-- Commit #4 demonstrates a form with export framework
-- Commit #5 provides an example of both inline and imported components. This commit also includes a workaround for the fsevents glitch.
-- Commits #8-10 add and test firebase, .env and env.example for secure API deployment
-- Commit #11 incorporates Firebase Auth with useState Sign Up, Login, and Logout
+- Basic revisions to standard Vite React package including simple updates to index and App files, and the creation of a button component.
+- Login/logout actions
+- Indexed lists
+- Form with export framework
+- Inline and imported components, including a workaround for the fsevents glitch.
+- Adding and testing Firebase, .env and env.example for secure API deployment
+- Firebase Auth with useState for Sign Up, Login, and Logout, with vanilla CSS and responsive state handling
 
 # Future Plans
 

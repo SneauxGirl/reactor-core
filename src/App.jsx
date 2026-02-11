@@ -63,12 +63,12 @@ const logOut = () => {
 
     return (
       <>
-        <p>Firestore Authentication</p>
         <div>
           {
             !user && (
               // React fragnent required for free-range elements (children with no parent)
               <>
+                <p>Firestore Authentication</p>
                 <input name="username" type="email" placeholder="Email" autoComplete="username" value={email} onChange={(event) => setEmail(event.target.value)} />
                 <input name="password" type="password" placeholder="Password" autoComplete="current-password" value={password} onChange={(event) => setPassword(event.target.value)} />
                 <button onClick={signUp}>Sign up</button>
