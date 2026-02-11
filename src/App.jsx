@@ -1,6 +1,7 @@
 import './App.css';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, getDoc, updateDoc } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -17,32 +18,37 @@ const app = initializeApp(firebaseConfig, {
 });
 const db = getFirestore(app);
 
-async function testFirestore() {
-  const docRef = doc(db, "testCollection", "testDocument");
-  const docSnap = await getDoc(docRef);
+function App() {
+  const [name, setName] = useState("");
 
-  //  Updates specific fields
-  await updateDoc(docRef, {
-    age: "493",
-    name: "Dutch Bros"
-})
+  useEffect(() => {
+    async function testFirestore() {
+    const docRef = doc(db, "testCollection", "testDocument");
 
-  if (docSnap.exists()) {
-    console.log("Updated document data:", docSnap.data());
-  } else {
-    console.log("No such document!");
-  }
+    //  Update specific fields
+    await updateDoc(docRef, {
+      age: "493",
+      name: "Dutch Bros"
+  })
+      // Read the updated document
+      const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      console.log("Updated document data:", docSnap.data());
+      setName(docSnap.data().name);
+    } else {
+      console.log("No such document!");
+    }
 }
 
 testFirestore();
+  }, []);
 
-function App() {
-
-  return (
-    <>
-    <p>Firestore Test</p>
+    return (
+      <>
+    <p>Firestore Test: {name || "loading..."}</p>
     </>
-  )
+  );
 }
 
 export default App;
