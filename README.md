@@ -8,6 +8,7 @@ This is a refererence build in five parts.
 - Commit #4 demonstrates a form with export framework
 - Commit #5 provides an example of both inline and imported components. This commit also includes a workaround for the fsevents glitch.
 - Commits #8-10 add and test firebase, .env and env.example for secure API deployment
+- Commit #11 incorporates Firebase Auth with useState Sign Up, Login, and Logout
 
 # Future Plans
 
