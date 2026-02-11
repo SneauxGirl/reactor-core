@@ -1,51 +1,47 @@
 import './App.css';
-import { BrowserRouter as Router, Link, Routes, Route} from 'react-router-dom';
-import Services from './pages/Services';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
+
+const firebaseConfig = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID, 
+};
+
+// Calls Firestore
+const app = initializeApp(firebaseConfig, {
+  automaticDataCollectionEnabled: false,
+});
+const db = getFirestore(app);
+
+//  Updates specific fields
+await updateDoc(docRef, {
+  age: "493",
+  name: "Dutch Bros"
+})
+
+async function testFirestore() {
+  const docRef = doc(db, "testCollection", "testDocument");
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    console.log("Document data:", docSnap.data());
+  } else {
+    console.log("No such document!");
+  }
+}
+
+testFirestore();
 
 function App() {
-  // Components - generally in their own files
-  function Home() {
-    return <h2>Home Page</h2>
-  }
 
-  function About() {
-    return <h2>About</h2>
-  }
-
-  function Contact() {
-    return <h2>Contact</h2>
-  }
-
-  //Navigates between different locations (components)
   return (
-    <Router>
-      <div className='container'>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/contact">Contact</Link>
-            </li>
-            <li>
-              <Link to="/services">Services</Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
-
-      {/* Define the Routes */}
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/services' element={<Services />} />
-      </Routes>
-    </Router>
+    <>
+    <p>Test, Test: {import.meta.env.VITE_FIREBASE_API_KEY}</p>
+    </>
   )
 }
 
