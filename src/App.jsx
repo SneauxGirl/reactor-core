@@ -1,6 +1,6 @@
 import './App.css';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, doc, getDoc } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, updateDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -11,24 +11,24 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID, 
 };
 
-// Calls Firestore
+// Initialize Firebase
 const app = initializeApp(firebaseConfig, {
   automaticDataCollectionEnabled: false,
 });
 const db = getFirestore(app);
 
-//  Updates specific fields
-await updateDoc(docRef, {
-  age: "493",
-  name: "Dutch Bros"
-})
-
 async function testFirestore() {
   const docRef = doc(db, "testCollection", "testDocument");
   const docSnap = await getDoc(docRef);
 
+  //  Updates specific fields
+  await updateDoc(docRef, {
+    age: "493",
+    name: "Dutch Bros"
+})
+
   if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data());
+    console.log("Updated document data:", docSnap.data());
   } else {
     console.log("No such document!");
   }
@@ -40,7 +40,7 @@ function App() {
 
   return (
     <>
-    <p>Test, Test: {import.meta.env.VITE_FIREBASE_API_KEY}</p>
+    <p>Firestore Test</p>
     </>
   )
 }
