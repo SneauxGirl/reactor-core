@@ -9,10 +9,11 @@ This is a reference build for initial stages and base components of a CRUD app.
 - Inline and imported components, including a workaround for the fsevents glitch.
 - Adding and testing Firebase, .env and env.example for secure API deployment
 - Firebase Auth with useState for Sign Up, Login, and Logout, with vanilla CSS and responsive state handling
+- Todo component with Firestore CRUD operations: add, save, edit, and delete tasks
 
 # Future Plans
 
-None. Consider this class notes or a small bag of nails.
+Currently none other than styling. Consider this class notes or a small bag of nails.
 
 # React + Vite
 
